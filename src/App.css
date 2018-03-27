@@ -1,28 +1,142 @@
+/* TODO: How to add scss to project, how to make a scss file for each component */
+
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,700');
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: #DA4453;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #89216B, #DA4453);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #89216B, #DA4453); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+
+}
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
+  background-color: #ffffff;
+  max-width: 300px;
+  min-height: 400px;
+  margin: 50px auto;
+  border-radius: 10px;
+  box-shadow: 0 12px 10px -8px rgba(0,0,0,.3);
   padding: 20px;
-  color: white;
 }
 
-.App-title {
-  font-size: 1.5em;
+.app-title {
+  background: #DA4453;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #89216B, #DA4453);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #89216B, #DA4453); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  display: inline-block;
+  color: transparent;
+  background-clip: text;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.add-task {
+  position: relative;
+  margin-bottom: 20px;
+}
+.add-task__input {
+  width: 100%;
+  border-radius: 30px;
+  background-color: #eee;
+  border: none;
+  font: inherit;
+  padding: 10px 50px 10px 20px;
+}
+.add-task__btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+  line-height: 20px;
+  font-weight: 300;
+  color: #ffffff;
+  background-color: #89216B;
+  cursor: pointer;
+}
+.add-task__btn span {
+  position: relative;
+  z-index: 2;
+}
+.add-task__btn::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-color: #89216B;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+  z-index: 1;
+  transition: all .5s ease-out;
+  transform: scale(1);
+  opacity: 1;
+}
+.add-task__btn--active::after {
+  animation: btn-animation .2s linear;
+}
+.text-help {
+  text-align: center;
+  color: #999;
+}
+.tasks-list {
+  list-style: none;
+}
+.tasks-list__item {
+  border: 1px #cccccc solid;
+  border-radius: 3px;
+  margin-bottom: 5px;
+}
+.tasks-list__item input {
+  visibility: none;
+  position: absolute;
+  top: -9999px;
+}
+.tasks-list__item label {
+  /*background-color: #ff0000;*/
+  display: block;
+  position: relative;
+  cursor: pointer;
+  padding: 10px 10px 10px 40px;
+}
+.tasks-list__item input:checked + label {
+  text-decoration: line-through;
+  color: #999999;
+}
+.icon {
+  position: absolute;
+  top: 12px;
+  left: 10px;
+  width: 16px;
+  height: 16px;
+}
+.checkbox-unchecked,
+.checkbox-checked {
+  fill: #89216B;
+}
+.tasks-list__item input + label > .checkbox-unchecked {
+  visibility: visible;
+}
+.tasks-list__item input + label > .checkbox-checked {
+  visibility: hidden;
+}
+.tasks-list__item input:checked + label > .checkbox-unchecked {
+  visibility: hidden;
+}
+.tasks-list__item input:checked + label > .checkbox-checked {
+  visibility: visible;
 }
 
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+@keyframes btn-animation {
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
 }

@@ -1,3 +1,11 @@
+/*
+TODO:
+- sorting tasks, done last
+- clear done tasks button
+- saving data to local store
+- saving data to backend
+*/
+
 import React, { Component } from 'react';
 import './App.css';
 import AddTask from './components/add-task';
@@ -25,8 +33,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <h1 className="app-title">ToDo List</h1>
         <AddTask addTask={this.addTask} />
-        <hr />
         <TasksList tasks={this.state.tasks} />
       </div>
     );
